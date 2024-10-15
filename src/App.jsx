@@ -3,6 +3,7 @@ import reset from "styled-reset";
 import Header from "./components/Header";
 import Form from "./components/Form/Form";
 import Content from "./components/Content/Content";
+import { useState } from "react";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -16,12 +17,18 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  const [reload, setReload] = useState(false);
+
+  const handleReload = () => {
+    setReload((prev) => !prev);
+  };
+
   return (
     <>
       <GlobalStyle />
       <Header />
-      <Form />
-      <Content />
+      <Form onTodoAdded={handleReload} />
+      <Content reload={reload} />
     </>
   );
 }

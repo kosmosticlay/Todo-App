@@ -46,22 +46,23 @@ const StyledBtn = styled.button`
   font-size: 1.1rem;
 `;
 
-export default function Form() {
+export default function Form({ onTodoAdded }) {
   const [newTodo, setNewTodo] = useState({
     id: uuidv4(),
     category: "",
     content: "",
   });
 
-  const handleAddTodo = (e) => {
+  const handleAddTodo = async (e) => {
     e.preventDefault();
     if (newTodo.category && newTodo.content) {
-      addTodo(newTodo);
+      await addTodo(newTodo);
       setNewTodo({
         id: uuidv4(),
         category: "",
         content: "",
       });
+      onTodoAdded();
     } else {
       alert("카테고리와 내용을 모두 입력하세요.");
     }

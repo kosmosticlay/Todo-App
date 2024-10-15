@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import { getData } from "../../utils/todoApi";
+import { deleteTodo, getData } from "../../utils/todoApi";
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -18,11 +18,10 @@ const Status = styled.h2`
 `;
 
 const TodoList = styled.ul`
-  background-color: white;
   height: max-content;
 `;
 
-export default function TodoConatiner({ status }) {
+export default function TodoConatiner({ status, reload }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -30,11 +29,20 @@ export default function TodoConatiner({ status }) {
       const result = await getData(status);
       if (!result) return;
       setData(JSON.parse(result));
-      console.log(data);
     };
 
     fetchData();
-  }, [data]);
+  }, [status, reload]);
+
+  console.log(data);
+
+  const handleDelete = async (status, id) => {
+    if (window.confirm("정말로 삭제하실건가요?")) {
+      await deleteTodo(status, id);
+      const updatedData = await getData(status);
+      setData(JSON.parse(updatedData));
+    }
+  };
 
   return (
     <Wrapper>
@@ -45,8 +53,12 @@ export default function TodoConatiner({ status }) {
         {data.map((item) => (
           <TodoItem
             key={item.id}
+            id={item.id}
+            status={status}
             category={item.category}
             content={item.content}
+            timestamp={item.timestamp}
+            onDelete={handleDelete}
           />
         ))}
       </TodoList>

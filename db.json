@@ -1,53 +1,18 @@
 {
   "todo": [
     {
-      "id": "54cc2026-048e-4103-9928-ea57d3db653b",
-      "category": "🚗 TRAVEL",
-      "content": "일본가고 싶다"
-    },
-    {
-      "id": "c92ee001-23dd-4383-97bc-6f7503c46a59",
-      "category": "🚗 TRAVEL",
-      "content": "일본 여행 가고 싶다"
-    },
-    {
-      "id": "b51e56f5-fe0a-405f-9730-3ffd68dc774f",
-      "category": "🏃 SPORTS",
-      "content": "헬스장 가야"
-    },
-    {
-      "id": "02f53252-4c01-4a8d-8280-d219a589ed0f",
-      "category": "❤️ RELATIONSHIPS",
-      "content": "뿅!! 나타나라!!"
-    },
-    {
-      "id": "09279071-cafe-4ef1-ba02-840182161355",
-      "category": "🏃 SPORTS",
-      "content": "진짜로 됐잖아!?"
-    },
-    {
-      "id": "ef512bd1-8093-4290-891e-de18f0dd6e78",
+      "id": "4d82282d-f59a-4885-b5d4-b6e34db01eef",
       "category": "🛠️ WORK",
-      "content": "되려나"
+      "content": "테스트 1",
+      "timestamp": "2024.10.15"
     },
     {
-      "id": "2ae658af-ec2b-4b1a-829b-cb7a6df68e3e",
-      "category": "🧑‍💻 PERSONAL",
-      "content": "돌아가야 할텐데"
+      "id": "d53d9c2d-530f-4808-a35c-e7cb67b37854",
+      "category": "🚗 TRAVEL",
+      "content": "테스트2",
+      "timestamp": "2024.10.15"
     }
   ],
-  "inProgress": [
-    {
-      "id": "1",
-      "category": "🏃 SPORTS",
-      "content": "헬스장 가기 싫다"
-    }
-  ],
-  "completed": [
-    {
-      "id": "1",
-      "category": "🛠️ WORK",
-      "content": "오늘 과제를 다 할 수 있을까 그것이 문제로다"
-    }
-  ]
+  "inProgress": [],
+  "completed": []
 }
