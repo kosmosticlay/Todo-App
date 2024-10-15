@@ -1,12 +1,12 @@
 {
-  "todo": [],
-  "inProgress": [],
-  "completed": [
+  "todo": [
     {
-      "id": "f4b6b240-69cc-4242-9c5b-cc6a9d6474cc",
-      "category": "🧑‍💻 PERSONAL",
+      "id": "8532c367-e03a-41ec-8813-064c3ebc0938",
+      "category": "🛠️ WORK",
       "content": "테스트1",
       "timestamp": "2024.10.15"
     }
-  ]
+  ],
+  "inProgress": [],
+  "completed": []
 }

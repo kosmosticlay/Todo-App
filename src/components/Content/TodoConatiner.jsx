@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 const Status = styled.h2`
   width: 100%;
   padding: 10px 20px;
-  background-color: #e6cbff;
   font-size: 1.1rem;
   font-weight: bold;
 `;
@@ -49,17 +48,38 @@ export default function TodoConatiner({ status, reload, onReload }) {
       newStatus = "inProgress";
     } else if (currentStatus === "inProgress") {
       newStatus = "completed";
+    } else {
+      return;
     }
 
     const item = data.find((todo) => todo.id === id);
 
     await moveTodo(id, currentStatus, newStatus, item);
-    onReload(); // 상태 변경 후 reload 상태를 변경하여 리렌더링 유도
+    onReload();
   };
+
+  const handleRewind = async (id, currentStatus) => {
+    let previousStatus;
+    if (currentStatus === "completed") {
+      previousStatus = "inProgress";
+    } else if (currentStatus === "inProgress") {
+      previousStatus = "todo";
+    } else {
+      return;
+    }
+
+    const item = data.find((todo) => todo.id === id);
+
+    await moveTodo(id, currentStatus, previousStatus, item);
+    onReload();
+  };
+
   return (
     <Wrapper>
       <Status>
-        {status} ({data.length})
+        {status === "todo" && "To do"}
+        {status === "inProgress" && "In Progress"}
+        {status === "completed" && "Completed"} ({data.length})
       </Status>
       <TodoList>
         {data.map((item) => (
@@ -72,6 +92,7 @@ export default function TodoConatiner({ status, reload, onReload }) {
             timestamp={item.timestamp}
             onDelete={handleDelete}
             onMove={handleMove}
+            onRewind={handleRewind}
           />
         ))}
       </TodoList>
