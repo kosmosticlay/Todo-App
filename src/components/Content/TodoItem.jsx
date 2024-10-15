@@ -16,7 +16,22 @@ const Item = styled.li`
 const ItemHeader = styled.div`
   width: max-content;
   height: 25px;
-  background-color: #9898ff;
+  background-color: ${(props) => {
+    switch (props.category) {
+      case "🧑‍💻 PERSONAL":
+        return "#ffadad";
+      case "🛠️ WORK":
+        return "#ffd6a5";
+      case "🏃 SPORTS":
+        return "#fdffb6";
+      case "🚗 TRAVEL":
+        return "#caffbf";
+      case "❤️ RELATIONSHIPS":
+        return "#9bf6ff";
+      default:
+        return "#9898ff";
+    }
+  }};
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -100,7 +115,7 @@ export default function TodoItem({
 
   return (
     <Item>
-      <ItemHeader>
+      <ItemHeader category={newCategory}>
         {isEditing ? (
           <Category
             newTodo={{ category: newCategory }}

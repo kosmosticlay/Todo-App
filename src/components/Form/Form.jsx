@@ -8,7 +8,6 @@ import Category from "./Category";
 const StyledForm = styled.form`
   width: 100%;
   height: 100px;
-  background-color: #35b6b6;
   display: flex;
   flex-direction: column;
   justify-content: center;

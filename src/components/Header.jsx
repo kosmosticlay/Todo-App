@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   height: 100px;
-  background-color: black;
+  background-color: #35b6b6;
   display: flex;
   justify-content: center;
   align-items: center;

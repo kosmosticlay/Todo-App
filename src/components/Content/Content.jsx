@@ -5,7 +5,7 @@ import TodoConatiner from "./TodoConatiner";
 const Wrapper = styled.div`
   width: 100%;
   height: max-content;
-  background-color: antiquewhite;
+  background-color: #c0e9e7;
   display: flex;
   gap: 10px;
   padding: 20px;
