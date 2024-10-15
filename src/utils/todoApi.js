@@ -49,4 +49,40 @@ const deleteTodo = async (status, id) => {
   }
 };
 
-export { addTodo, getData, deleteTodo };
+// json server에서 상태 변경하기
+const moveTodo = async (id, currentStatus, newStatus, itemData) => {
+  try {
+    // 현재 상태에서 아이템 삭제
+    await fetch(`http://localhost:3000/${currentStatus}/${id}`, {
+      method: "DELETE",
+    });
+
+    // 새 상태에 아이템 추가
+    await fetch(`http://localhost:3000/${newStatus}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(itemData),
+    });
+  } catch (error) {
+    console.error("Error moving todo:", error);
+  }
+};
+
+// json server에서 할일 업데이트하기
+const updateTodo = async (status, id, updatedData) => {
+  try {
+    await fetch(`http://localhost:3000/${status}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    });
+  } catch (error) {
+    console.error("Error updating item:", error);
+  }
+};
+
+export { addTodo, getData, deleteTodo, moveTodo, updateTodo };

@@ -28,7 +28,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Form onTodoAdded={handleReload} />
-      <Content reload={reload} />
+      <Content reload={reload} onReload={handleReload} />
     </>
   );
 }

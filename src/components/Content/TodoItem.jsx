@@ -1,4 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Category from "../Form/Category";
+import { updateTodo } from "../../utils/todoApi";
 
 const Item = styled.li`
   height: max-content;
@@ -58,19 +61,67 @@ export default function TodoItem({
   content,
   timestamp,
   onDelete,
+  onMove,
 }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [newCategory, setNewCategory] = useState(category);
+  const [newContent, setNewContent] = useState(content);
+
+  const handleMove = () => {
+    if (!isEditing) {
+      onMove(id, status);
+    }
+  };
+
   const handleDelete = () => {
     onDelete(status, id);
   };
 
+  const handleEdit = async () => {
+    console.log(isEditing, "hey");
+    if (isEditing) {
+      const updatedData = {
+        category: newCategory,
+        content: newContent,
+        timestamp,
+      };
+
+      await updateTodo(status, id, updatedData);
+      setIsEditing(false);
+    } else {
+      setIsEditing(true);
+    }
+  };
+
   return (
     <Item>
-      <ItemHeader>{category}</ItemHeader>
-      <Content>{content}</Content>
+      <ItemHeader>
+        {isEditing ? (
+          <Category
+            newTodo={{ category: newCategory }}
+            setNewTodo={(updated) => setNewCategory(updated.category)}
+          />
+        ) : (
+          newCategory
+        )}
+      </ItemHeader>
+      <Content onClick={handleMove}>
+        {isEditing ? (
+          <>
+            <input
+              value={newContent}
+              onChange={(e) => setNewContent(e.target.value)}
+            />
+            <button onClick={handleEdit}>수정</button>
+          </>
+        ) : (
+          newContent
+        )}
+      </Content>
       <ItemFooter>
         <TimeStamp>📆{timestamp}</TimeStamp>
         <Buttons>
-          <button title="수정">
+          <button title="수정" onClick={() => setIsEditing(true)}>
             <svg
               fill="#757575"
               width="15px"

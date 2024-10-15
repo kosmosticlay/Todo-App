@@ -11,12 +11,12 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 
-export default function Content({ reload }) {
+export default function Content({ reload, onReload }) {
   return (
     <Wrapper>
-      <TodoConatiner status="todo" reload={reload} />
-      <TodoConatiner status="inProgress" reload={reload} />
-      <TodoConatiner status="completed" reload={reload} />
+      <TodoConatiner status="todo" reload={reload} onReload={onReload} />
+      <TodoConatiner status="inProgress" reload={reload} onReload={onReload} />
+      <TodoConatiner status="completed" reload={reload} onReload={onReload} />
     </Wrapper>
   );
 }

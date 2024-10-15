@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import { deleteTodo, getData } from "../../utils/todoApi";
+import { deleteTodo, getData, moveTodo } from "../../utils/todoApi";
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -21,7 +21,7 @@ const TodoList = styled.ul`
   height: max-content;
 `;
 
-export default function TodoConatiner({ status, reload }) {
+export default function TodoConatiner({ status, reload, onReload }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -39,11 +39,23 @@ export default function TodoConatiner({ status, reload }) {
   const handleDelete = async (status, id) => {
     if (window.confirm("정말로 삭제하실건가요?")) {
       await deleteTodo(status, id);
-      const updatedData = await getData(status);
-      setData(JSON.parse(updatedData));
+      onReload();
     }
   };
 
+  const handleMove = async (id, currentStatus) => {
+    let newStatus;
+    if (currentStatus === "todo") {
+      newStatus = "inProgress";
+    } else if (currentStatus === "inProgress") {
+      newStatus = "completed";
+    }
+
+    const item = data.find((todo) => todo.id === id);
+
+    await moveTodo(id, currentStatus, newStatus, item);
+    onReload(); // 상태 변경 후 reload 상태를 변경하여 리렌더링 유도
+  };
   return (
     <Wrapper>
       <Status>
@@ -59,6 +71,7 @@ export default function TodoConatiner({ status, reload }) {
             content={item.content}
             timestamp={item.timestamp}
             onDelete={handleDelete}
+            onMove={handleMove}
           />
         ))}
       </TodoList>

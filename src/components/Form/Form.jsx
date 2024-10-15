@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import AddButton from "./AddButton";
 import { addTodo } from "../../utils/todoApi";
+import Category from "./Category";
 
 const StyledForm = styled.form`
   width: 100%;
@@ -75,19 +76,7 @@ export default function Form({ onTodoAdded }) {
         <AddButton aria-label="카테고리 추가 버튼" title="카테고리 추가">
           +
         </AddButton>
-        <select
-          value={newTodo.category}
-          onChange={(e) => setNewTodo({ ...newTodo, category: e.target.value })}
-        >
-          <option disabled value="">
-            카테고리 선택
-          </option>
-          <option>🧑‍💻 PERSONAL</option>
-          <option>🛠️ WORK</option>
-          <option>🏃 SPORTS</option>
-          <option>🚗 TRAVEL</option>
-          <option>❤️ RELATIONSHIPS</option>
-        </select>
+        <Category newTodo={newTodo} setNewTodo={setNewTodo} />
         <StyledInput
           value={newTodo.content}
           onChange={(e) => setNewTodo({ ...newTodo, content: e.target.value })}

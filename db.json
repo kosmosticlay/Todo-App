@@ -1,18 +1,12 @@
 {
-  "todo": [
+  "todo": [],
+  "inProgress": [],
+  "completed": [
     {
-      "id": "4d82282d-f59a-4885-b5d4-b6e34db01eef",
-      "category": "🛠️ WORK",
-      "content": "테스트 1",
-      "timestamp": "2024.10.15"
-    },
-    {
-      "id": "d53d9c2d-530f-4808-a35c-e7cb67b37854",
-      "category": "🚗 TRAVEL",
-      "content": "테스트2",
+      "id": "f4b6b240-69cc-4242-9c5b-cc6a9d6474cc",
+      "category": "🧑‍💻 PERSONAL",
+      "content": "테스트1",
       "timestamp": "2024.10.15"
     }
-  ],
-  "inProgress": [],
-  "completed": []
+  ]
 }
