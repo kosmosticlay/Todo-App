@@ -9,6 +9,8 @@ const Button = styled.button`
   border: none;
   background-color: aquamarine;
   font-size: 1.5rem;
+  // 추후 업데이트
+  display: none;
 `;
 
 export default function AddButton({ children }) {

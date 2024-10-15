@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Item = styled.li`
-  width: 100%;
   height: max-content;
   margin: 10px 0;
   padding-bottom: 1cqmin;
@@ -11,17 +10,18 @@ const Item = styled.li`
 `;
 
 const ItemHeader = styled.div`
-  width: 150px;
+  width: max-content;
   height: 25px;
   background-color: #9898ff;
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding: 0 10px;
 `;
 
 const Content = styled.p`
   padding: 20px;
   color: white;
+  cursor: pointer;
 `;
 
 const ItemFooter = styled.div`

@@ -14,9 +14,9 @@ const Wrapper = styled.div`
 export default function Content() {
   return (
     <Wrapper>
-      <TodoConatiner status="Todo" />
-      <TodoConatiner status="In progress" />
-      <TodoConatiner status="Completed" />
+      <TodoConatiner status="todo" />
+      <TodoConatiner status="inProgress" />
+      <TodoConatiner status="completed" />
     </Wrapper>
   );
 }
